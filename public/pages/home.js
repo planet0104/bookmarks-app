@@ -1,5 +1,5 @@
 ﻿
-const SelectItemType = {
+window.SelectItemType = {
     None: 0,
     /// 选中了题目级别
     QuestionLevel: 1,
@@ -15,7 +15,7 @@ const SelectItemType = {
     AnswerMark: 6,
 }
 
-async function Home(){
+window.Home = async function(){
     return {
         template: await (await fetch('pages/home.html')).text(),
         data(){
@@ -1244,6 +1244,7 @@ function startUpload(self){
             let paper_id = self.paper_id;
             uploadMarks(image_width, image_height, paper_id, chapter_id, items, book, grade, page, term);
         }).catch(e => {
+            console.error(e);
             vant.Toast('已取消保存');
         });
     }

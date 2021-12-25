@@ -122,7 +122,7 @@ function getUserMedia() {
         navigator.msGetUserMedia || null;
 }
 
-function isEmpty(val){
+window.isEmpty = function(val){
     if(val == null || val == undefined){
         return true;
     }else if(typeof val == 'string'){
@@ -143,7 +143,7 @@ function isEmpty(val){
     return false;
 }
 
-function points_to_rect(points){
+window.points_to_rect = function(points){
     if (points.length < 4){
         return null;
     }
@@ -155,11 +155,11 @@ function points_to_rect(points){
     };
 }
 
-function cloneObject(obj){
+window.cloneObject = function(obj){
     return JSON.parse(JSON.stringify(obj));
 }
 
-function rect_to_points(rect){
+window.rect_to_points = function(rect){
     return [
         {X: rect.x, Y:rect.y},
         {X: rect.x+rect.width, Y: rect.y},
@@ -168,11 +168,11 @@ function rect_to_points(rect){
     ]
 }
 
-function calc_distance(p1, p2){
+window.calc_distance = function(p1, p2){
     return Math.sqrt(((p2.X-p1.X)*(p2.X-p1.X)+(p2.Y-p1.Y)*(p2.Y-p1.Y)));
 }
 
-function is_point_in_polygon(polygon, test_point){
+window.is_point_in_polygon = function(polygon, test_point){
     var contains = false;
     if (polygon.length < 4){
         return false;
@@ -189,7 +189,7 @@ function is_point_in_polygon(polygon, test_point){
     return contains;
 }
 
-function marks_scale_mul(marks, scale){
+window.marks_scale_mul = function(marks, scale){
     marks.forEach(mark =>{
         mark_scale_mul(mark, scale);
         if (mark.Models){
@@ -205,7 +205,7 @@ function marks_scale_mul(marks, scale){
     });
 }
 
-function marks_scale_div(marks, scale){
+window.marks_scale_div = function(marks, scale){
     marks.forEach(mark =>{
         mark_scale_div(mark, scale);
         if (mark.Models){
@@ -222,7 +222,7 @@ function marks_scale_div(marks, scale){
 }
 
 /// mark的坐标点乘以一个比例
-function mark_scale_mul(mark, scale){
+window.mark_scale_mul = function(mark, scale){
     mark.Points.forEach(pt => {
         pt.X = pt.X * scale;
         pt.Y = pt.Y * scale;
@@ -238,7 +238,7 @@ function mark_scale_mul(mark, scale){
 }
 
 /// mark的坐标点除以一个比例
-function mark_scale_div(mark, scale){
+window.mark_scale_div = function(mark, scale){
     mark.Points.forEach(pt => {
         pt.X = pt.X / scale;
         pt.Y = pt.Y / scale;

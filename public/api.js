@@ -1,23 +1,23 @@
-const BASE_URL = "";
+window.BASE_URL = "";
 
-const API_TeachUserInfo = 'TeacherUserCenter/TeacherPersonal/GetTeachUserInfo';
-const API_TeacherTaskList = 'teacher/TeacherWorkbook/TeacherTaskList';
-const API_TeacherStudentDoTaskList = 'teacher/TeacherWorkbook/TeacherStudentDoTaskList';
-const API_GetWookbookStudentDoTaskResult = 'student/StudentWorkbook/GetWookbookStudentDoTaskResult';
+window.API_TeachUserInfo = 'TeacherUserCenter/TeacherPersonal/GetTeachUserInfo';
+window.API_TeacherTaskList = 'teacher/TeacherWorkbook/TeacherTaskList';
+window.API_TeacherStudentDoTaskList = 'teacher/TeacherWorkbook/TeacherStudentDoTaskList';
+window.API_GetWookbookStudentDoTaskResult = 'student/StudentWorkbook/GetWookbookStudentDoTaskResult';
 //查询章节列表
-const API_GetTwoLevalByUserId = 'Report/StudentReport/GetTwoLevalByUserId';
+window.API_GetTwoLevalByUserId = 'Report/StudentReport/GetTwoLevalByUserId';
 //获取试卷列表
-const API_GetPaperList = 'admin/AdminWorkbook/GetPaperId';
+window.API_GetPaperList = 'admin/AdminWorkbook/GetPaperId';
 // 获取PageId
-const API_GetPageIdsByPaperType = 'admin/AdminWorkbook/GetPageIdsByPaperType';
+window.API_GetPageIdsByPaperType = 'admin/AdminWorkbook/GetPageIdsByPaperType';
 //
-const API_GetWorkbookPageByGtp = 'admin/AdminWorkbook/GetWorkbookPageByGtp';
+window.API_GetWorkbookPageByGtp = 'admin/AdminWorkbook/GetWorkbookPageByGtp';
 //获取标记
-const API_GetWorkbookMarkJson = 'admin/AdminWorkbook/GetWorkbookMarkJson';
+window.API_GetWorkbookMarkJson = 'admin/AdminWorkbook/GetWorkbookMarkJson';
 //获取标记ID
-const API_GetMarkId = 'admin/AdminWorkbook/GetMarkId';
+window.API_GetMarkId = 'admin/AdminWorkbook/GetMarkId';
 //
-const API_DeleteWorkbookMark = 'admin/AdminWorkbook/DeleteWorkbookMark';
+window.API_DeleteWorkbookMark = 'admin/AdminWorkbook/DeleteWorkbookMark';
 
 function splice_url(api_url){
     return BASE_URL + api_url;
@@ -75,7 +75,7 @@ function request(method, api_url, data){
     });
 }
 
-function post_data(api_url, body){
+window.post_data = function(api_url, body){
     return new Promise((resolve, reject) => {
         var url = splice_url(api_url);
         Logger.info('请求:', url, body);
@@ -103,34 +103,29 @@ function post_data(api_url, body){
     });
 }
 
-function GetWorkbookPageByGtp(option){
+window.GetWorkbookPageByGtp = function(option){
     return post(API_GetWorkbookPageByGtp, option)
 }
 
 //获取marks
-function GetWorkbookMarkJson(option){
+window.GetWorkbookMarkJson = function(option){
     return post(API_GetWorkbookMarkJson, option)
 }
 
-function GetMarkId(option){
+window.GetMarkId = function(option){
     return get(API_GetMarkId, option)
 }
 
-function DeleteWorkbookMark(option){
+window.DeleteWorkbookMark = function(option){
     return post(API_DeleteWorkbookMark, option)
 }
 
-function getPageIdsByPaperType(option){
+window.getPageIdsByPaperType = function(option){
     return post(API_GetPageIdsByPaperType, option)
 }
 
-// 获取作业详情
-function getTeacherWorkDetail(option){
-    return post(API_TeacherStudentDoTaskList, option)
-}
-
 //查询章节列表
-function getChapters(Grade, Term){
+window.getChapters = function(Grade, Term){
     return post(API_GetTwoLevalByUserId, {
         Term,
         Grade
@@ -138,11 +133,11 @@ function getChapters(Grade, Term){
 }
 
 //获取试卷列表
-function getPaperList(creatorId){
+window.getPaperList = function(creatorId){
     return post(API_GetPaperList, {creatorId})
 }
 
-async function downloadImage(url){
+window.downloadImage = async function(url){
     return new Promise((resolve, reject) => {
         var image = new Image();
         image.src = url;

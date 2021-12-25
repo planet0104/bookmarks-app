@@ -1,4 +1,4 @@
-var HttpCache = new Map();
+window.HttpCache = new Map();
 
 HttpCache.set(
     API_GetTwoLevalByUserId,
