@@ -7,6 +7,11 @@ bookmarks-app
 cargo install tauri-cli --git https://github.com/tauri-apps/tauri
 ```
 
+## 初始化一个项目
+```cmd
+cargo tauri init
+```
+
 ## test
 
 ```cmd
